@@ -14,7 +14,7 @@ export default function TopographPage() {
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>
           <h2
-            className="text-2xl font-bold"
+            className="text-3xl font-bold"
             style={{ fontFamily: "var(--font-serif)", color: "var(--text-primary)", fontStyle: "italic" }}
           >
             Conway&apos;s Topograph
