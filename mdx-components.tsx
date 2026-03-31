@@ -48,7 +48,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className="w-full text-sm border-collapse"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          {children}
+          {Array.isArray(children)
+            ? children.filter((c) => typeof c !== "string" || c.trim() !== "")
+            : children}
         </table>
       </div>
     ),
