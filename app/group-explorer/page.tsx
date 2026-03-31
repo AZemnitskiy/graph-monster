@@ -43,6 +43,8 @@ export default function GroupExplorerPage() {
       {/* Gallery */}
       <ImageGallery
         href="https://huggingface.co/spaces/azemnitskiy/group-explorer"
+        imgWidth={1888}
+        imgHeight={892}
         slides={[
           { src: "/screenshots/group_explorer.png", alt: "Group Explorer — Cayley diagram view" },
           { src: "/screenshots/group_explorer_2.png", alt: "Group Explorer — alternating group view" },

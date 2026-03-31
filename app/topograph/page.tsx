@@ -43,6 +43,8 @@ export default function TopographPage() {
       {/* Gallery */}
       <ImageGallery
         href="https://topograph-explorer.vercel.app/"
+        imgWidth={1901}
+        imgHeight={961}
         slides={[
           { src: "/screenshots/topograph.png", alt: "Conway's Topograph — home triad view" },
           { src: "/screenshots/topograph_2.png", alt: "Conway's Topograph — Poincaré disc view" },
