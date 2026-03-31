@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Slide {
   src: string;
@@ -10,9 +10,29 @@ interface Slide {
 
 export default function ImageGallery({ slides, href }: { slides: Slide[]; href: string }) {
   const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(true);
 
-  const prev = () => setCurrent((i) => (i - 1 + slides.length) % slides.length);
-  const next = () => setCurrent((i) => (i + 1) % slides.length);
+  const goTo = (index: number) => {
+    setVisible(false);
+    setTimeout(() => {
+      setCurrent(index);
+      setVisible(true);
+    }, 300);
+  };
+
+  const prev = () => goTo((current - 1 + slides.length) % slides.length);
+  const next = () => goTo((current + 1) % slides.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setCurrent((i) => (i + 1) % slides.length);
+        setVisible(true);
+      }, 300);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [slides.length]);
 
   return (
     <div
@@ -26,7 +46,8 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
           alt={slides[current].alt}
           width={1200}
           height={680}
-          className="w-full h-auto transition-opacity duration-300"
+          className="w-full h-auto"
+          style={{ opacity: visible ? 1 : 0, transition: "opacity 300ms ease-in-out" }}
           priority={current === 0}
         />
       </a>
@@ -35,7 +56,7 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full transition-opacity"
+        className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full"
         style={{ backgroundColor: "rgba(0,0,0,0.45)", color: "#fff" }}
       >
         ‹
@@ -43,7 +64,7 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full transition-opacity"
+        className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full"
         style={{ backgroundColor: "rgba(0,0,0,0.45)", color: "#fff" }}
       >
         ›
@@ -54,7 +75,7 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             className="w-2 h-2 rounded-full transition-colors"
             style={{ backgroundColor: i === current ? "#fff" : "rgba(255,255,255,0.45)" }}
