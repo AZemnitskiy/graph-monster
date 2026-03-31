@@ -10,27 +10,15 @@ interface Slide {
 
 export default function ImageGallery({ slides, href }: { slides: Slide[]; href: string }) {
   const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(true);
 
-  const goTo = (index: number) => {
-    setVisible(false);
-    setTimeout(() => {
-      setCurrent(index);
-      setVisible(true);
-    }, 300);
-  };
-
+  const goTo = (index: number) => setCurrent(index);
   const prev = () => goTo((current - 1 + slides.length) % slides.length);
   const next = () => goTo((current + 1) % slides.length);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setCurrent((i) => (i + 1) % slides.length);
-        setVisible(true);
-      }, 300);
-    }, 2000);
+      setCurrent((i) => (i + 1) % slides.length);
+    }, 3000);
     return () => clearInterval(id);
   }, [slides.length]);
 
@@ -39,17 +27,24 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
       className="relative rounded-lg overflow-hidden border"
       style={{ borderColor: "var(--border)" }}
     >
-      {/* Image */}
+      {/* Stacked slides — CSS crossfade */}
       <a href={href} target="_blank" rel="noopener noreferrer" className="block">
-        <Image
-          src={slides[current].src}
-          alt={slides[current].alt}
-          width={1200}
-          height={680}
-          className="w-full h-auto"
-          style={{ opacity: visible ? 1 : 0, transition: "opacity 300ms ease-in-out" }}
-          priority={current === 0}
-        />
+        <div className="relative w-full" style={{ aspectRatio: "1200 / 680" }}>
+          {slides.map((slide, i) => (
+            <Image
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className="object-cover"
+              style={{
+                opacity: i === current ? 1 : 0,
+                transition: "opacity 600ms ease-in-out",
+              }}
+              priority={i === 0}
+            />
+          ))}
+        </div>
       </a>
 
       {/* Prev / Next */}
