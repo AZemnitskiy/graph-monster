@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ImageGallery from "@/components/ImageGallery";
 import Content from "./content.mdx";
 
 export const metadata: Metadata = {
@@ -40,23 +40,14 @@ export default function GroupExplorerPage() {
         </a>
       </div>
 
-      {/* Screenshot */}
-      <a
+      {/* Gallery */}
+      <ImageGallery
         href="https://huggingface.co/spaces/azemnitskiy/group-explorer"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block rounded-lg overflow-hidden border transition-opacity hover:opacity-90"
-        style={{ borderColor: "var(--border)" }}
-      >
-        <Image
-          src="/screenshots/group_explorer.png"
-          alt="Group Explorer screenshot"
-          width={1200}
-          height={680}
-          className="w-full h-auto"
-          priority
-        />
-      </a>
+        slides={[
+          { src: "/screenshots/group_explorer.png", alt: "Group Explorer — Cayley diagram view" },
+          { src: "/screenshots/group_explorer_2.png", alt: "Group Explorer — alternating group view" },
+        ]}
+      />
 
       {/* Content */}
       <Content />

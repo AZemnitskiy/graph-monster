@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ImageGallery from "@/components/ImageGallery";
 import Content from "./content.mdx";
 
 export const metadata: Metadata = {
@@ -40,23 +40,14 @@ export default function TopographPage() {
         </a>
       </div>
 
-      {/* Screenshot */}
-      <a
+      {/* Gallery */}
+      <ImageGallery
         href="https://topograph-explorer.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block rounded-lg overflow-hidden border transition-opacity hover:opacity-90"
-        style={{ borderColor: "var(--border)" }}
-      >
-        <Image
-          src="/screenshots/topograph.png"
-          alt="Conway's Topograph screenshot"
-          width={1200}
-          height={680}
-          className="w-full h-auto"
-          priority
-        />
-      </a>
+        slides={[
+          { src: "/screenshots/topograph.png", alt: "Conway's Topograph — home triad view" },
+          { src: "/screenshots/topograph_2.png", alt: "Conway's Topograph — Poincaré disc view" },
+        ]}
+      />
 
       {/* Content */}
       <Content />
