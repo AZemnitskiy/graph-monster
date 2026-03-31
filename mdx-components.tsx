@@ -35,6 +35,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     strong: ({ children }) => (
       <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>{children}</strong>
     ),
+    thead: ({ children }) => (
+      <thead>
+        {Array.isArray(children)
+          ? children.filter((c) => typeof c !== "string" || c.trim() !== "")
+          : children}
+      </thead>
+    ),
     table: ({ children }) => (
       <div className="overflow-x-auto my-6">
         <table
@@ -51,6 +58,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           ? children.filter((c) => typeof c !== "string" || c.trim() !== "")
           : children}
       </tbody>
+    ),
+    tr: ({ children }) => (
+      <tr>
+        {Array.isArray(children)
+          ? children.filter((c) => typeof c !== "string" || c.trim() !== "")
+          : children}
+      </tr>
     ),
     th: ({ children }) => (
       <th
