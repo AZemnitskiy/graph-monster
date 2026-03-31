@@ -27,22 +27,25 @@ export default function ImageGallery({ slides, href }: { slides: Slide[]; href: 
       className="relative rounded-lg overflow-hidden border"
       style={{ borderColor: "var(--border)" }}
     >
-      {/* Stacked slides — CSS crossfade */}
+      {/* Scrolling track */}
       <a href={href} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="relative w-full" style={{ aspectRatio: "1200 / 680" }}>
-          {slides.map((slide, i) => (
-            <Image
-              key={slide.src}
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className="object-cover"
-              style={{
-                opacity: i === current ? 1 : 0,
-                transition: "opacity 600ms ease-in-out",
-              }}
-              priority={i === 0}
-            />
+        <div
+          className="flex"
+          style={{
+            transform: `translateX(-${current * 100}%)`,
+            transition: "transform 900ms cubic-bezier(0.45, 0, 0.2, 1)",
+          }}
+        >
+          {slides.map((slide) => (
+            <div key={slide.src} className="shrink-0 w-full" style={{ aspectRatio: "1200 / 680" }}>
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                width={1200}
+                height={680}
+                className="w-full h-auto"
+              />
+            </div>
           ))}
         </div>
       </a>
