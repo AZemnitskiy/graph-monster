@@ -45,6 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </table>
       </div>
     ),
+    tbody: (props) => <tbody {...props} suppressHydrationWarning />,
     th: ({ children }) => (
       <th
         className="text-left py-2 pr-8 font-medium border-b"
