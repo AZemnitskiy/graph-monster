@@ -1,0 +1,48 @@
+Tutorials live in `public/tutorials/` as JSON files and load automatically on startup. Use the dropdown in the sidebar to switch between them.
+
+| File | Title | Views | Topics |
+|------|-------|-------|--------|
+| `01_home_triad.json` | The Home Triad | 4 | Seed values, Q(1,0)/Q(0,1)/Q(−1,−1), the root superbase |
+| `02_arithmetic_progression.json` | The Arithmetic Progression Rule | 4 | How each face is determined by its two parents: f = u + v − e |
+| `03_sign_map_river.json` | Sign Map and the River | 4 | Positive/negative/zero faces; the river as the sign-change boundary |
+| `04_discriminant.json` | The Discriminant | 4 | D = b²−4ac; definite vs indefinite forms; how D controls the river |
+| `05_definite_forms.json` | Positive-Definite Forms | 4 | D < 0 forms, no river, minimum value, reduced forms |
+| `06_indefinite_pell.json` | Indefinite Forms and Pell's Equation | 4 | D > 0 forms, periodic river, Pell solutions as value-1 cells |
+| `07_equivalence.json` | Equivalence of Forms | 4 | SL₂(ℤ) action, reduced forms, same discriminant ↔ equivalent |
+| `08_poincare_disc.json` | The Poincaré Disc View | 3 | Hyperbolic geometry, geodesics, the river as a hyperbolic line |
+
+## Writing Your Own Tutorials
+
+Add a `.json` file to `public/tutorials/` with this structure:
+
+```json
+{
+  "title": "Tutorial Title",
+  "views": [
+    {
+      "title": "Step Title",
+      "text": "Explanatory text...",
+      "activity": "Something for the reader to try...",
+      "form": { "a": 1, "b": 0, "c": -1 },
+      "state": {
+        "depth": 4,
+        "show_signs": true,
+        "mode": "river",
+        "highlight_home": true
+      },
+      "quiz": {
+        "question": "Question text?",
+        "options": ["A", "B", "C", "D"],
+        "correct": 0,
+        "explanation": "Because..."
+      }
+    }
+  ]
+}
+```
+
+**`form`** sets the a, b, c coefficients for that step.
+
+**`state.mode`** values: `"default"` · `"river"` · `"pell"` · `"equiv"`.
+
+**`quiz`** is optional; omit the key to skip the quiz for that step.

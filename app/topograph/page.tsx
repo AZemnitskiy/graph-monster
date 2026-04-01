@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ImageGallery from "@/components/ImageGallery";
+import ContentTabs from "@/components/ContentTabs";
 import Content from "./content.mdx";
+import Tutorials from "./tutorials.mdx";
 
 export const metadata: Metadata = {
   title: "Conway's Topograph — Graph Monster",
@@ -52,7 +54,7 @@ export default function TopographPage() {
       />
 
       {/* Content */}
-      <Content />
+      <ContentTabs overview={<Content />} tutorials={<Tutorials />} />
     </div>
   );
 }

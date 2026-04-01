@@ -1,0 +1,99 @@
+Tutorials live in `tutorials/` as JSON files and load automatically on startup. Use the dropdown in the sidebar to switch between them.
+
+The sequence follows **Pinter, *A Book of Abstract Algebra* (2nd ed., Dover)** — see the mapping table below.
+
+| File | Title | Views | Topics |
+|------|-------|-------|--------|
+| `01_group_basics.json` | Group Basics | 7 | The four axioms, Cayley tables, identity, inverses, ℤ₃, ℤ₄, V₄ |
+| `02_dihedral_groups.json` | Dihedral Groups | 7 | Rotations and reflections, non-abelian behavior, D₃ and D₄ |
+| `03_symmetric_s3.json` | The Symmetric Group S₃ | 6 | Permutations, cycle notation, non-commutativity, S₃≅D₃ |
+| `04_quaternion_q8.json` | The Quaternion Group Q₈ | 5 | Q₈ structure, all subgroups normal, Q₈ vs D₄, order-8 landscape |
+| `05_alternating_a4.json` | The Alternating Group A₄ | 4 | Even permutations, K⊴A₄, Lagrange converse fails, conjugacy classes of A₄ |
+| `06_isomorphisms.json` | Isomorphisms | 5 | Bijective homomorphisms, automorphisms of ℤ₆, S₃≅D₃, order invariants, Aut(S₃) |
+| `07_cyclic_groups.json` | Cyclic Groups | 7 | Generators, order formula, generator criterion, subgroup lattice, V₄ non-cyclic |
+| `08_subgroups_lagrange.json` | Subgroups and Lagrange's Theorem | 7 | Subgroup test, Lagrange's theorem, index, normal subgroups, index-2 theorem |
+| `09_cosets.json` | Cosets and Normal Subgroups | 6 | Left/right cosets, partition, index, normality, gH=Hg, abelian groups |
+| `10_conjugacy.json` | Conjugacy Classes | 7 | Conjugation, center Z(G), class equation, D₄ conjugacy |
+| `11_homomorphisms.json` | Homomorphisms | 7 | Definition, trivial map, kernel, fibers, injective/surjective, sign map, FIT preview |
+| `12_z2xz4_direct_product.json` | ℤ₂×ℤ₄: Direct Products | 5 | Direct product construction, element orders, subgroup structure |
+| `13_quotient_groups.json` | Quotient Groups | 7 | Cosets as elements, coset multiplication, D₄/⟨r⟩, S₃/A₃, A₄/K, normality required, FIT |
+| `14_cube_conjugation.json` | Cube Lab: Conjugation | 5 | Conjugation action, relocation principle, conjugacy classes, cycle structure invariance |
+| `15_cube_commutator.json` | Cube Lab: Commutators | 5 | Non-commutativity, `[g,h] = g h g⁻¹ h⁻¹`, Sexy Move, parity of commutators |
+| `16_cube_order.json` | Cube Lab: Element Order | 5 | Order from cycle structure, LCM formula, orders 4/6/1260, Lagrange's theorem |
+| `17_cube_parity.json` | Cube Lab: Parity | 5 | Parity homomorphism `φ: G → ℤ₂`, kernel, impossible states, FIT |
+| `18_cube_generators.json` | Cube Lab: Generators | 5 | Generating sets, BFS subgroup counting, `⟨U,D⟩ ≅ ℤ₄×ℤ₄`, minimal generators |
+
+## Pinter Chapter Mapping
+
+Tutorials 01–13 align with Pinter's group theory chapters. Tutorials 14–18 are a Cube Lab supplement with no direct Pinter chapter.
+
+| Tutorial | Pinter Chapter | Topic |
+|----------|---------------|-------|
+| 01 — Group Basics | Ch 3–4 | Definition of Groups; Elementary Properties |
+| 02 — Dihedral Groups | Ch 7 | Groups of Permutations (Dihedral) |
+| 03 — Symmetric S₃ | Ch 7–8 | Symmetric Groups; Even and Odd Permutations |
+| 04 — Quaternion Q₈ | Ch 7 | Non-abelian group examples |
+| 05 — Alternating A₄ | Ch 8 | Alternating Groups |
+| 06 — Isomorphisms | Ch 9 | Isomorphism |
+| 07 — Cyclic Groups | Ch 10–11 | Order of Group Elements; Cyclic Groups |
+| 08 — Subgroups & Lagrange | Ch 5 + 13 | Subgroups; Counting Cosets (Lagrange's Theorem) |
+| 09 — Cosets | Ch 13–14 | Counting Cosets; Normal Subgroups |
+| 10 — Conjugacy Classes | Ch 13 + 15 | Conjugate Elements; Class Equation |
+| 11 — Homomorphisms | Ch 14 | Homomorphisms; Kernel and Range |
+| 12 — ℤ₂×ℤ₄ Direct Products | Ch 4 + 14 | Direct Product; Inner Direct Products |
+| 13 — Quotient Groups | Ch 15–16 | Quotient Groups; Fundamental Homomorphism Theorem |
+| 14–18 — Cube Lab | — | Supplement: Rubik's Cube as a group theory sandbox |
+
+**Pinter chapters not yet covered:** Ch 1 (Why Abstract Algebra), Ch 2 (Operations), Ch 6 (Functions), Ch 12 (Partitions and Equivalence Relations), Ch 16 advanced topics (Cauchy's Theorem, Sylow subgroups, Decomposition Theorem for Finite Abelian Groups).
+
+## Writing Your Own Tutorials
+
+Add a `.json` file to `tutorials/` with this structure:
+
+```json
+{
+  "title": "Tutorial Title",
+  "book": "Optional source reference",
+  "views": [
+    {
+      "title": "View Title",
+      "text": "Explanatory text (plain text, pre-wrap monospace display)...",
+      "group": { "type": "Zn", "n": 6 },
+      "morph_target": { "type": "Zn", "n": 3 },
+      "state": {
+        "selected_1": "2",
+        "selected_2": null,
+        "show_subgroup": true,
+        "show_conj": false,
+        "show_table": false,
+        "morph_mode": false,
+        "morph_idx": 0
+      }
+    }
+  ]
+}
+```
+
+**`group.type`** / **`morph_target.type`** values: `"Zn"` (requires `"n"`), `"Dn"` (requires `"n"`), `"S3"`, `"V4"`.
+
+**`selected_1`** / **`selected_2`**: element label string (e.g. `"2"` for Z₆, `"r"` for Dₙ, `"(12)"` for S₃) or `null`.
+
+**`morph_mode`**: `true` to open the Morphism View, `false` for Cayley Diagram (default).
+
+**`morph_target`**: the target group for the morphism diagram (optional; defaults to Zₙ with n=6).
+
+**`morph_idx`**: which homomorphism to display (0 = first/most interesting; isomorphisms sort before non-trivial maps, trivial map sorts last).
+
+**Cube Lab state fields** (all optional; set `cube_active: true` to open the Cube Lab tab):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `cube_active` | bool | Open the Cube Lab tab |
+| `cube_mode` | string | `"conjugation"` \| `"commutator"` \| `"order"` \| `"parity"` \| `"generators"` |
+| `cube_conj_seq` | string | Sequence for conjugation mode (e.g. `"R U R' U'"`) |
+| `cube_conj_g` | string | Conjugating move `g` (e.g. `"F"`) |
+| `cube_comm_g` | string | First move for commutator mode |
+| `cube_comm_h` | string | Second move for commutator mode |
+| `cube_order_seq` | string | Sequence for order mode |
+| `cube_parity_seq` | string | Sequence for parity mode |
+| `cube_gen_active` | list | Active face generators, e.g. `["U","D"]` |
