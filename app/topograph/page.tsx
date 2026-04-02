@@ -26,20 +26,35 @@ export default function TopographPage() {
             Binary Quadratic Form Explorer
           </p>
         </div>
-        <a
-          href="https://topograph-explorer.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold transition-colors shrink-0"
-          style={{
-            backgroundColor: "var(--accent)",
-            color: "#fff",
-            fontFamily: "var(--font-mono)",
-            textDecoration: "none",
-          }}
-        >
-          Open App ↗
-        </a>
+        <div className="flex flex-row items-center gap-2 shrink-0">
+          <a
+            href="https://github.com/AZemnitskiy/topograph"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold transition-colors"
+            style={{
+              color: "var(--accent)",
+              fontFamily: "var(--font-mono)",
+              textDecoration: "none",
+            }}
+          >
+            Source Code ↗
+          </a>
+          <a
+            href="https://topograph-explorer.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold transition-colors"
+            style={{
+              backgroundColor: "var(--accent)",
+              color: "#fff",
+              fontFamily: "var(--font-mono)",
+              textDecoration: "none",
+            }}
+          >
+            Open App ↗
+          </a>
+        </div>
       </div>
 
       {/* Gallery */}
