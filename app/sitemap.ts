@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://graph.monster/group-explorer",
+      url: "https://graph.monster/cayleidoscope",
       changeFrequency: "monthly",
       priority: 1,
     },

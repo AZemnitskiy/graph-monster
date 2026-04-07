@@ -5,12 +5,12 @@ import Content from "./content.mdx";
 import Tutorials from "./tutorials.mdx";
 
 export const metadata: Metadata = {
-  title: "Group Explorer — Graph Monster",
+  title: "Cayleidoscope — Graph Monster",
   description:
     "An interactive visualizer for finite groups. Explore Cayley diagrams, multiplication tables, subgroups, conjugacy classes, homomorphisms, and isomorphisms.",
 };
 
-export default function GroupExplorerPage() {
+export default function CayleidoscopePage() {
   return (
     <div className="space-y-10">
       {/* Title + link */}
@@ -20,15 +20,15 @@ export default function GroupExplorerPage() {
             className="text-3xl font-bold"
             style={{ fontFamily: "var(--font-serif)", color: "var(--text-primary)", fontStyle: "italic" }}
           >
-            Group Explorer
+            Cayleidoscope
           </h2>
           <p className="mt-1 text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
-            Abstract Algebra Visualizer
+            Finite Group Visualizer
           </p>
         </div>
         <div className="flex flex-row items-center gap-2 shrink-0">
           <a
-            href="https://huggingface.co/spaces/azemnitskiy/group-explorer/tree/main"
+            href="https://huggingface.co/spaces/azemnitskiy/cayleidoscope/tree/main"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold transition-colors"
@@ -41,7 +41,7 @@ export default function GroupExplorerPage() {
             Source Code ↗
           </a>
           <a
-            href="https://huggingface.co/spaces/azemnitskiy/group-explorer"
+            href="https://huggingface.co/spaces/azemnitskiy/cayleidoscope"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold transition-colors"
@@ -59,12 +59,12 @@ export default function GroupExplorerPage() {
 
       {/* Gallery */}
       <ImageGallery
-        href="https://huggingface.co/spaces/azemnitskiy/group-explorer"
+        href="https://huggingface.co/spaces/azemnitskiy/cayleidoscope"
         imgWidth={1888}
         imgHeight={892}
         slides={[
-          { src: "/screenshots/group_explorer.png", alt: "Group Explorer — Cayley diagram view" },
-          { src: "/screenshots/group_explorer_2.png", alt: "Group Explorer — alternating group view" },
+          { src: "/screenshots/group_explorer.png", alt: "Cayleidoscope — Cayley diagram view" },
+          { src: "/screenshots/group_explorer_2.png", alt: "Cayleidoscope — alternating group view" },
         ]}
       />
 

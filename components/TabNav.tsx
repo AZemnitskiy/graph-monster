@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const tabs = [
-  { label: "Group Explorer", href: "/group-explorer" },
-  { label: "Conway's Topograph", href: "/topograph" },
+  { label: "Cayleidoscope", href: "/cayleidoscope" },
+  { label: "Topograph", href: "/topograph" },
 ];
 
 export default function TabNav() {
